@@ -32,7 +32,7 @@ public class MyWorker extends Worker {
 
     public Result doWork() {
 
-        // Mark the Worker as important
+        
         String progress = "Dimulai...";
         setForegroundAsync(createForegroundInfo(progress));
 
@@ -52,13 +52,13 @@ public class MyWorker extends Worker {
 
     @NonNull
     private ForegroundInfo createForegroundInfo(@NonNull String progress) {
-        // Build a notification using bytesRead and contentLength
+        
 
         Context context = getApplicationContext();
         String id = "my_channel";
         String title = "Proses ";
         String cancel = "Cancel";
-        // This PendingIntent can be used to cancel the worker
+        
         PendingIntent intent = WorkManager.getInstance(context)
                 .createCancelPendingIntent(getId());
 
@@ -71,8 +71,6 @@ public class MyWorker extends Worker {
                 .setTicker(title)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setOngoing(true)
-                // Add the cancel action to the notification which can
-                // be used to cancel the worker
                 .addAction(android.R.drawable.ic_delete, cancel, intent)
                 .build();
 
@@ -81,14 +79,12 @@ public class MyWorker extends Worker {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private void createChannel() {
-        // Create a Notification channel
+   
         CharSequence name = "Worker channel";
         String description = "Description";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel channel = new NotificationChannel("my_channel", name, importance);
         channel.setDescription(description);
-        // Register the channel with the system; you can't change the importance
-        // or other notification behaviors after this
         notificationManager.createNotificationChannel(channel);
     }
 }
