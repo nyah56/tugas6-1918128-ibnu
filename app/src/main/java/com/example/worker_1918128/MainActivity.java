@@ -25,7 +25,5 @@ public class MainActivity extends AppCompatActivity {
                         .build();
         WorkManager.getInstance(MainActivity.this).enqueue(locationUploadWorkRequest);
 
-        // to cancel worker class
-//        WorkManager.getInstance(MainActivity.this).cancelWorkById(locationUploadWorkRequest.getId());
     }
 }
