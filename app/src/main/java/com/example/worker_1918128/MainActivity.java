@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void oneTimeWork(View view) {
-        WorkRequest locationUploadWorkRequest =
+        WorkRequest MyWorker =
                 new OneTimeWorkRequest.Builder(MyWorker.class)
                         .setConstraints(new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).setRequiresStorageNotLow(true).build())
                         .build();
-        WorkManager.getInstance(MainActivity.this).enqueue(locationUploadWorkRequest);
+        WorkManager.getInstance(MainActivity.this).enqueue(MyWorker);
 
     }
 }
